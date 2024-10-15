@@ -37,7 +37,7 @@ load_threshold=$(nproc)
 #Telegram API to send notificaiton.
 function telegram_send
 {
-curl -s -F chat_id=$chat_id -F document=@$resource_usage_info -F caption="$caption" https://api.telegram.org/bot$token/sendDocument > /dev/null 2&>1
+curl -H 'Host: api.telegram.org' -s -F chat_id=$chat_id -F document=@$resource_usage_info -F caption="$caption" https://t.me/bot$token/sendDocument > /dev/null 2&>1
 }
 
 #Monitoring Load on the server

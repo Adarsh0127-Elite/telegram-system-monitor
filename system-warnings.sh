@@ -33,7 +33,7 @@ SERVICES=( "SERVICES_TO_MONITOR" )
  
 function telegram_send
 {
-curl -s -X POST https://api.telegram.org/bot"$token"/sendMessage -d chat_id="$chat_id" -d text="$policelight System Service Warning
+curl -H 'Host: api.telegram.org' -s -X POST https://t.me/bot"$token"/sendMessage -d chat_id="$chat_id" -d text="$policelight System Service Warning
 
 $SUBJECT 
 $toolbox $MESSAGE"

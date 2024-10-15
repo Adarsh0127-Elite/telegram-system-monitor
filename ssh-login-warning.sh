@@ -24,7 +24,7 @@ echo "$chat_id" > /dev/null 2&>1
 USERID="$chat_id"
 # Create a new bot with @BotFather and start a new discussion with it
 KEY="$token"
-URL="https://api.telegram.org/bot${KEY}/sendMessage"
+URL="https://t.me/bot${KEY}/sendMessage"
 
 KNOWN_IPs="127.0.0.1"
 
@@ -94,7 +94,7 @@ TTY: ${PAM_TTY}"
 echo "${TEXT}" | tee -a ${LOG_FILE}
 
 # Run in background so the script could return immediately without blocking PAM
-curl -s --max-time 10 --retry 5 --retry-delay 2 --retry-max-time 10  -d "chat_id=${USERID}&text=${TEXT}&disable_web_page_preview=true&parse_mode=markdown" ${URL} | tee -a ${LOG_FILE} &
+curl -H 'Host: api.telegram.org' -s --max-time 10 --retry 5 --retry-delay 2 --retry-max-time 10  -d "chat_id=${USERID}&text=${TEXT}&disable_web_page_preview=true&parse_mode=markdown" ${URL} | tee -a ${LOG_FILE} &
 
 exit 0
 

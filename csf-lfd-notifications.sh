@@ -21,7 +21,7 @@ lookingglass=$'\U1F50D'
 #Telegram API to send notification.
 function telegram_send
 {
-curl -s -X POST https://api.telegram.org/bot"$token"/sendMessage -d chat_id="$chat_id" -d text="$padlock CSF LFD alert $lookingglass 
+curl -H 'Host: api.telegram.org' -s -X POST https://t.me/bot"$token"/sendMessage -d chat_id="$chat_id" -d text="$padlock CSF LFD alert $lookingglass 
 
 $(hostname) 
 $message"

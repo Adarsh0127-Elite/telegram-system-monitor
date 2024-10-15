@@ -29,7 +29,7 @@ disk=$'\U1F4BD'
 
 function telegram_send
 {
-curl -s -X POST https://api.telegram.org/bot"$token"/sendMessage -d chat_id="$chat_id" -d text="$policelight Storage Warning
+curl -H 'Host: api.telegram.org' -s -X POST https://t.me/bot"$token"/sendMessage -d chat_id="$chat_id" -d text="$policelight Storage Warning
 
 Your "YOUR_HD_LOCATION" partition available space is critically low on $(hostname) $(date) $exclamation
 

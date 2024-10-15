@@ -30,11 +30,11 @@ cat /var/log/mail.log | /usr/sbin/pflogsumm -d today > /tmp/mailer.txt
 #Telegram API to send notification.
 function telegram_send
 {
-curl -s -F chat_id=$chat_id -F document=@$postfix_info -F caption="$chart Postfix Report
+curl -H 'Host: api.telegram.org' -s -F chat_id=$chat_id -F document=@$postfix_info -F caption="$chart Postfix Report
 
 POSTFIX $email
 Report as requested for: 
-$(hostname)" https://api.telegram.org/bot$token/sendDocument > /dev/null 2&>1
+$(hostname)" https://t.me/bot$token/sendDocument > /dev/null 2&>1
 }
 
         telegram_send
